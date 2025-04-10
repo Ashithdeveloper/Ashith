@@ -45,8 +45,8 @@ const Sidebar = () => {
         <Link to="/" className="flex justify-center md:justify-start h-25   ">
           <div className=" mt-5 font-bold text-2xl ml-1.5   rounded-2xl hidden lg:block mr-4 ">
             <img
-              src={logo}
-              alt=""
+              src="/knowverse.png"
+              alt="Knowverse"
               className="max-w-40 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-3xl "
             />
           </div>
