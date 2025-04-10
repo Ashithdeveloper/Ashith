@@ -10,7 +10,6 @@ import { baseUrl } from "../../constant/url";
 import { IoSearchSharp } from "react-icons/io5";
 
 import { GrArticle } from "react-icons/gr";
-import logo from "../../assets/Knowverse.png";
 const Sidebar = () => {
   const queryClient = useQueryClient();
   const { mutate: logout } = useMutation({
