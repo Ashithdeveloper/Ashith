@@ -10,7 +10,7 @@ import { MdDriveFileRenameOutline } from "react-icons/md";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { baseUrl } from "../../../constant/url";
-import logo from "../../../assets/Knowverse.png";
+import logo from '../../../assets/Knowverse.png';
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
