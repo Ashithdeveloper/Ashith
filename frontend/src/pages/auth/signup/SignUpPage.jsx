@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
-import XSvg from "../../../components/svgs/X";
-
 import { MdOutlineMail } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
@@ -10,7 +7,7 @@ import { MdDriveFileRenameOutline } from "react-icons/md";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { baseUrl } from "../../../constant/url";
-import logo from "../../../assets/knowverse.png";
+//import logo from "../../../assets/knowverse.png";
 
 
 const SignUpPage = () => {
@@ -66,8 +63,8 @@ const SignUpPage = () => {
       {/* Left Section (Hidden on Small Screens) */}
       <div className="flex-1 hidden lg:flex items-center justify-center  ">
         <img
-          src={logo}
-          alt=""
+          src="/knowverse.png"
+          alt="Knowverse"
           srcset=""
           className="w-32 sm:w-40 md:w-90 rounded-4xl "
         />
@@ -81,8 +78,8 @@ const SignUpPage = () => {
         >
           {/* Mobile Logo */}
           <img
-            src={logo}
-            alt=""
+            src="/knowverse.png"
+            alt="Knowverse"
             srcset=""
             className="w-28 rounded-4xl ml-9 lg:hidden "
           />

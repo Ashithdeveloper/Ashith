@@ -1,15 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
-import XSvg from "../../../components/svgs/X";
-
 import { FaUser } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
-
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { baseUrl } from "../../../constant/url";
 import toast from "react-hot-toast";
-import logo from "../../../assets/Knowverse.png";
+
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -62,11 +58,21 @@ const LoginPage = () => {
   return (
     <div className="max-w-screen mx-auto flex lg:h-88 mt-35 shadow-[0_3px_10px_rgb(0,0,0,0.2)] sm:h-100 p-12  ">
       <div className="flex-1 hidden lg:flex items-center  justify-center ">
-          <img src={logo} alt="" srcset="" className="lg:w-80   " />
+        <img
+          src="/knowverse.png"
+          alt="Knowverse"
+          srcset=""
+          className="lg:w-80   "
+        />
       </div>
       <div className="flex-1 flex flex-col justify-center items-center">
         <form className="flex gap-4 flex-col" onSubmit={handleSubmit}>
-          <img src={logo} alt="" srcset="" className="w-28 rounded-4xl ml-9 lg:hidden " />
+          <img
+            src="/knowverse.png"
+            alt="Knowverse"
+            srcset=""
+            className="w-28 rounded-4xl ml-9 lg:hidden "
+          />
           <h1 className="text-4xl font-extrabold text-black">{"Let's"} go.</h1>
           <label className="input input-bordered rounded flex items-center gap-2">
             <FaUser />
