@@ -22,7 +22,7 @@ cloudinary.config({
 });
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000; 
 
 
 app.use(express.json({
@@ -50,10 +50,11 @@ app.use('/api/notifications', notificationRoute);
 app.use('/api/articles',articleRoute)
 if(process.env.NODE_ENV === "production")
 {
-  app.use(express.static(path.join(__dirname, "/frontend/dist")));
-  app.use("*",(req,res)=>{
-    res.sendFile(path.resolve(__dirname,"frontend","dist","index.html"))
-  })
+ app.use(express.static(path.join(__dirname, "frontend", "dist")));
+ app.use("*", (req, res) => {
+   res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+ });
+
 }
 
 
