@@ -224,7 +224,7 @@ const Post = ({ post }) => {
                             <img
                               src={
                                 comment.user.profileImg ||
-                                "/avatar-placeholder.png"
+                                "/boy2.png"
                               }
                             />
                           </div>
