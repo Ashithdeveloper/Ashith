@@ -41,7 +41,7 @@ const Search = () => {
         </div>
         <div>
           <input
-            className="input border border-gray-700 rounded-3xl  input-md w-[320px] sm:w-[500px]  sm:mr-80 shadow-[0_3px_10px_rgb(0,0,0,0.2)] border-none focus:shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)]"
+            className="input border border-gray-700 rounded-3xl  input-md w-[320px] sm:w-[550px]  sm:mr-90 shadow-[0_3px_10px_rgb(0,0,0,0.2)] border-none focus:shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)]"
             type="text"
             placeholder="search username....."
             onChange={handlesearch}
