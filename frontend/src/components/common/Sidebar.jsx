@@ -39,7 +39,7 @@ const Sidebar = () => {
   const { data: authUser } = useQuery({ queryKey: ["authUser"] });
 
   return (
-    <div className="md:flex-[2_2_0] w-18 max-w-52 ml-5 hidden sm:block ">
+    <div className="md:flex-[2_2_0] w-18 max-w-52 ml-3 hidden sm:block ">
       <div className="sticky top-0 left-0 h-screen flex flex-col border-r border-gray-700 w-20 md:w-full">
         <Link to="/" className="flex justify-center md:justify-start h-25   ">
           <div className=" mt-5 font-bold text-2xl ml-1.5   rounded-2xl hidden lg:block mr-4 ">
@@ -107,7 +107,7 @@ const Sidebar = () => {
           >
             <div className="avatar hidden md:inline-flex ">
               <div className="w-9 rounded-2xl   ">
-                <img src={authUser?.profileImg || "/avatar-placeholder.png"} />
+                <img src={authUser?.profileImg || "/boy2.png"} />
               </div>
             </div>
             <div className="flex justify-between flex-1 shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] p-2 rounded-2xl  ">

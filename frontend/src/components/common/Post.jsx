@@ -151,7 +151,7 @@ const Post = ({ post }) => {
             to={`/profile/${postOwner.username}`}
             className="w-8 rounded-full overflow-hidden"
           >
-            <img src={postOwner.profileImg || "/avatar-placeholder.png"} />
+            <img src={postOwner.profileImg || "/boy2.png"} />
           </Link>
         </div>
         <div className="flex flex-col flex-1">
@@ -224,7 +224,7 @@ const Post = ({ post }) => {
                             <img
                               src={
                                 comment.user.profileImg ||
-                                "/avatar-placeholder.png"
+                                "/boy2.png"
                               }
                             />
                           </div>
