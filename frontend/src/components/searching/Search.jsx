@@ -58,6 +58,10 @@ const Search = () => {
             </svg>
           </div>
           <input
+<<<<<<< HEAD
+=======
+            className="input border border-gray-700 rounded-3xl  input-md w-[320px] sm:w-[530px]  sm:mr-90 shadow-[0_3px_10px_rgb(0,0,0,0.2)] border-none focus:shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)]"
+>>>>>>> 2f12331412a20b63f6ebc05df9129e0d6f5a09e4
             type="text"
             placeholder="search username....."
             onChange={handlesearch}
