@@ -33,6 +33,8 @@ const Search = () => {
   };
   return (
     <div className="flex-[4_4_0] border-l border-r border-gray-700 min-h-screen">
+       <div className="flex justify-between items-center p-4 border-b border-gray-700">
+        <p className="font-bold"> Search</p>
       <form class="flex items-center max-w-sm mx-auto">
         <label for="simple-search" class="sr-only">
           Search
@@ -56,10 +58,6 @@ const Search = () => {
             </svg>
           </div>
           <input
-<<<<<<< HEAD
-=======
-            className="input border border-gray-700 rounded-3xl  input-md w-[320px] sm:w-[530px]  sm:mr-90 shadow-[0_3px_10px_rgb(0,0,0,0.2)] border-none focus:shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)]"
->>>>>>> aa642071c80a4140fe0f10f8436e6829acc907f8
             type="text"
             placeholder="search username....."
             onChange={handlesearch}
@@ -90,7 +88,7 @@ const Search = () => {
           <span class="sr-only">Search</span>
         </button>
       </form>
-
+     </div>
       <div>
         {results.map((user) => (
           <li key={user._id} className="list-none ">
