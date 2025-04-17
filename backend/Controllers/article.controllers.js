@@ -152,3 +152,24 @@ export const getUserArticle = async (req, res) => {
       res.status(500).json({ error: "Internal server error" });
     }
 }
+export const searchArticle = async (req, res) => {
+  const query = req.query.q?.trim();
+
+  if (!query) {
+    return res.status(400).json({ message: "Search query is required" });
+  }
+
+  try {
+    const articles = await Article.find({
+      $or: [
+        { title: { $regex: query, $options: "i" } },
+        { category: { $regex: query, $options: "i" } },
+      ],
+    }).populate("user", "_id username profileImg"); // this will give you user info
+
+    res.status(200).json(articles);
+  } catch (error) {
+    console.error("Search Error:", error);
+    res.status(500).json({ message: "Server error on search" });
+  }
+};

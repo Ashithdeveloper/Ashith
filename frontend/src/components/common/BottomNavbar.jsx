@@ -3,6 +3,7 @@ import { FaHome, FaSearch, FaUser } from "react-icons/fa";
 import { GrArticle } from "react-icons/gr";
 import { IoNotifications } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { FaPlus } from "react-icons/fa";
 
 const BottomNavbar = () => {
    const { data: authUser } = useQuery({ queryKey: ["authUser"] });
@@ -30,6 +31,13 @@ const BottomNavbar = () => {
         Article
       </Link>
       <Link
+        className="flex flex-col items-center text-sm hover:text-blue-400"
+        onClick={() => document.getElementById("my_modal_1").showModal()}
+      >
+        <FaPlus size={20} />
+        Add Article
+      </Link>
+      <Link
         to="/notifications"
         className="flex flex-col items-center text-sm hover:text-blue-400"
       >
@@ -38,7 +46,7 @@ const BottomNavbar = () => {
       </Link>
       <Link
         to={`/profile/${authUser?.username}`}
-        className="flex flex-col items-center text-sm hover:text-blue-400 mr-6"
+        className="flex flex-col items-center text-sm hover:text-blue-400 mr-1"
       >
         <FaUser size={20} />
         Profile

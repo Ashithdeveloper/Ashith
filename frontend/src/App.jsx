@@ -45,7 +45,7 @@ function App() {
       }
     }
   })
-  console.log(authUser)
+
   if(isLoading){
     return <div className="flex justify-center items-center h-screen" >
        <LoadingSpinner size="lg"/>
