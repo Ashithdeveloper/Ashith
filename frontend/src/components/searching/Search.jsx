@@ -56,6 +56,10 @@ const Search = () => {
             </svg>
           </div>
           <input
+<<<<<<< HEAD
+=======
+            className="input border border-gray-700 rounded-3xl  input-md w-[320px] sm:w-[530px]  sm:mr-90 shadow-[0_3px_10px_rgb(0,0,0,0.2)] border-none focus:shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)]"
+>>>>>>> aa642071c80a4140fe0f10f8436e6829acc907f8
             type="text"
             placeholder="search username....."
             onChange={handlesearch}
@@ -91,7 +95,7 @@ const Search = () => {
         {results.map((user) => (
           <li key={user._id} className="list-none ">
             <Link to={`/profile/${user.username}`}>
-              <div className="flex gap-2 items-center ml-18 md:ml-19 mt-5 shadow-[0_3px_10px_rgb(0,0,0,0.2)] max-w-75 sm:max-w-140 pl-4 p-3 rounded-2xl  ">
+              <div className="flex gap-2 items-center ml-15 md:ml-19 mt-5 shadow-[0_3px_10px_rgb(0,0,0,0.2)] max-w-75 sm:max-w-140 pl-4 p-3 rounded-2xl  ">
                 <div className="avatar">
                   <div className="w-8 rounded-full">
                     <img src={user.profileImg || "/boy2.png"} />
