@@ -85,7 +85,7 @@ const Sidebar = () => {
               to="/notifications"
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
-              <IoNotifications className="w-10 h-10" />
+              <IoNotifications className="w-8 h-8" />
               <span className="text-lg hidden md:block">Notifications</span>
             </Link>
           </li>
@@ -95,7 +95,7 @@ const Sidebar = () => {
               to={`/profile/${authUser?.username}`}
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
-              <FaUser className="w-10 h-10" />
+              <FaUser className="w-8 h-8" />
               <span className="text-lg hidden md:block">Profile</span>
             </Link>
           </li>
