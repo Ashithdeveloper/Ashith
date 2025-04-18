@@ -50,7 +50,7 @@ const Sidebar = () => {
             />
           </div>
         </Link>
-        <ul className="flex flex-col gap-3 mt-19  shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] p-4 rounded-2xl  mr-5 ">
+        <ul className="flex flex-col gap-3 mt-19  shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] p-4 rounded-2xl ml-5  mr-5 ">
           <li className="flex justify-center md:justify-start">
             <Link
               to="/"
@@ -63,9 +63,9 @@ const Sidebar = () => {
           <li className="flex justify-center md:justify-start">
             <Link
               to="/search"
-              className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-b-box duration-300 py-2 pl-2 pr-4 max-w-fit cursor-pointer"
+              className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-b-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
-              <IoSearchSharp className="w-8 h-8" />
+              <IoSearchSharp className="w-10 h-10" />
               <span className="text-lg hidden md:block">Search</span>
             </Link>
           </li>
@@ -73,9 +73,9 @@ const Sidebar = () => {
           <li className="flex justify-center md:justify-start">
             <Link
               to="/articles"
-              className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-b-box duration-300 py-2 pl-2 pr-4 max-w-fit cursor-pointer"
+              className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-b-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
-              <GrArticle className="w-8 h-8" />
+              <GrArticle className="w-10 h-10" />
               <span className="text-lg hidden md:block">Articles</span>
             </Link>
           </li>
@@ -83,9 +83,9 @@ const Sidebar = () => {
           <li className="flex justify-center md:justify-start">
             <Link
               to="/notifications"
-              className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-box duration-300 py-2 pl-2 pr-4 max-w-fit cursor-pointer"
+              className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
-              <IoNotifications className="w-6 h-6" />
+              <IoNotifications className="w-10 h-10" />
               <span className="text-lg hidden md:block">Notifications</span>
             </Link>
           </li>
@@ -93,9 +93,9 @@ const Sidebar = () => {
           <li className="flex justify-center md:justify-start">
             <Link
               to={`/profile/${authUser?.username}`}
-              className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-box duration-300 py-2 pl-2 pr-4 max-w-fit cursor-pointer"
+              className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
-              <FaUser className="w-6 h-6" />
+              <FaUser className="w-10 h-10" />
               <span className="text-lg hidden md:block">Profile</span>
             </Link>
           </li>
@@ -106,7 +106,7 @@ const Sidebar = () => {
             className="mt-auto mb-10 flex gap-2 items-start transition-all duration-300  py-2 px-4 rounded-full"
           >
             <div className="avatar hidden md:inline-flex ">
-              <div className="w-9 rounded-2xl   ">
+              <div className="w-10 rounded-3xl   ">
                 <img src={authUser?.profileImg || "/boy2.png"} />
               </div>
             </div>
