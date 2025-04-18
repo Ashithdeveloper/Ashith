@@ -31,13 +31,6 @@ const BottomNavbar = () => {
         Article
       </Link>
       <Link
-        className="flex flex-col items-center text-sm hover:text-blue-400"
-        onClick={() => document.getElementById("my_modal_1").showModal()}
-      >
-        <FaPlus size={20} />
-        Add Article
-      </Link>
-      <Link
         to="/notifications"
         className="flex flex-col items-center text-sm hover:text-blue-400"
       >
