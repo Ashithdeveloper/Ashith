@@ -57,7 +57,7 @@ const Sidebar = () => {
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-b-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
               <MdHomeFilled className="w-10 h-10" />
-              <span className="text-6x1 hidden md:block">Home</span>
+              <span className="text-[55px] hidden md:block">Home</span>
             </Link>
           </li>
           <li className="flex justify-center md:justify-start">
