@@ -42,7 +42,7 @@ const Sidebar = () => {
     <div className="md:flex-[2_2_0] w-18 max-w-60 ml-5 hidden sm:block ">
       <div className="sticky top-0 left-0 h-screen flex flex-col border-r border-gray-700 w-20 md:w-full">
         <Link to="/" className="flex justify-center md:justify-start h-25   ">
-          <div className=" mt-5 font-bold text-4xl ml-1.5   rounded-2xl hidden lg:block mr-4 ">
+          <div className=" mt-5 font-bold text-5xl ml-1.5   rounded-2xl hidden lg:block mr-4 ">
             <img
               src="/knowverse.png"
               alt="Knowverse"
