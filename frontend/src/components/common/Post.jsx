@@ -201,6 +201,7 @@ console.log(post);
               <div
                 className="flex gap-1 items-center cursor-pointer group"
                 onClick={() =>
+                  
                   document
                     .getElementById("comments_modal" + post._id)
                     .showModal()
