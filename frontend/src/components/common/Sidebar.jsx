@@ -42,9 +42,7 @@ const Sidebar = () => {
     <div className="md:flex-[2_2_0] w-18 max-w-63 ml-5 hidden sm:block ">
       <div className="sticky top-0 left-0 h-screen flex flex-col border-r border-gray-700 w-20 md:w-full">
         <Link to="/" className="flex justify-center md:justify-start h-25   ">
-
-          <div className=" mt-5 font-bold text-2xl ml-1.5  rounded-2xl hidden lg:block mr-4 ">
-
+          <div className=" mt-5 font-bold text-3xl ml-3   rounded-2xl hidden lg:block mr-4 ">
             <img
               src="/knowverse.png"
               alt="Knowverse"
@@ -52,8 +50,7 @@ const Sidebar = () => {
             />
           </div>
         </Link>
-
-        <ul className="flex flex-col gap-3 mt-17  shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] p-4  rounded-2xl  mr-5 ">
+        <ul className="flex flex-col gap-4 mt-23  shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] p-8 pl-3 pr-9 rounded-2xl  mr-4 ">
           <li className="flex justify-center md:justify-start">
             <Link
               to="/"
