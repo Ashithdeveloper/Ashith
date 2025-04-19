@@ -8,13 +8,13 @@ import { baseUrl } from "../../constant/url";
 
 const CreatePost = () => {
   const [text, setText] = useState("");
-  const [img, setImg] = useState(null);
-  const imgRef = useRef(null);
+  const [media, setMedia] = useState(null); // Renamed 'img' to 'media' to handle both image and video
+  const mediaRef = useRef(null); // Ref for file input
 
   const { data: authUser, isLoading: authLoading } = useQuery({
     queryKey: ["authUser"],
     queryFn: async () => {
-      const res = await fetch(`${baseUrl}/api/auth/user`); // Adjust URL based on your API
+      const res = await fetch(`${baseUrl}/api/auth/user`);
       if (!res.ok) throw new Error("Failed to fetch user data");
       return res.json();
     },
@@ -28,31 +28,30 @@ const CreatePost = () => {
     isError,
     error,
   } = useMutation({
- mutationFn: async ({ text, img }) => {
-  const formData = new FormData();
-  formData.append("text", text);
-  if (img) formData.append("img", img);
+    mutationFn: async ({ text, media }) => {
+      const formData = new FormData();
+      formData.append("text", text);
+      if (media) formData.append("media", media); // Append media (image or video)
 
-  const res = await fetch(`${baseUrl}/api/posts/create`, {
-    method: "POST",
-    credentials: "include",
-    body: formData,
-  });
+      const res = await fetch(`${baseUrl}/api/posts/create`, {
+        method: "POST",
+        credentials: "include",
+        body: formData,
+      });
 
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error || "Something went wrong");
-  return data;
-},
-  onSuccess: (newPost) => {
-      setText("");
-      setImg(null);
-      toast.success("Post created successfully");
-     queryClient.setQueryData(["posts"], (oldPosts) => {
-       if (!oldPosts) return [newPost];
-       return [newPost, ...oldPosts];
-     });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong");
+      return data;
     },
-
+    onSuccess: (newPost) => {
+      setText("");
+      setMedia(null);
+      toast.success("Post created successfully");
+      queryClient.setQueryData(["posts"], (oldPosts) => {
+        if (!oldPosts) return [newPost];
+        return [newPost, ...oldPosts];
+      });
+    },
     onError: (error) => {
       toast.error(error.message || "Failed to create post");
     },
@@ -60,28 +59,67 @@ const CreatePost = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitting Post:", { text, img });
+    console.log("Submitting Post:", { text, media });
 
-    if (!text.trim() && !img) {
+    if (!text.trim() && !media) {
       toast.error("Post content cannot be empty!");
       return;
     }
 
-    // Create FormData
-    const formData = new FormData();
-     formData.append("text", text.trim());
-    if (img) formData.append("img", img);
-      for (let pair of formData.entries()) {
-        console.log(pair[0] + ", " + pair[1]);
-      }
-    createPost({ text, img }); // Pass FormData instead of raw objects
+    createPost({ text, media });
   };
-  const handleImgChange = (e) => {
+
+  const handleMediaChange = (e) => {
     const file = e.target.files[0];
-    console.log("Selected File:", file); 
+    console.log("Selected File:", file);
+
     if (file) {
-      setImg(file);
-      imgRef.current.value = "";
+      setMedia(file);
+      mediaRef.current.value = ""; // Reset the input file after selection
+    }
+  };
+
+  const renderMediaPreview = () => {
+    if (media) {
+      const mediaUrl = URL.createObjectURL(media);
+      const isVideo = media.type.startsWith("video/");
+
+      if (isVideo) {
+        return (
+          <div className="relative w-72 mx-auto">
+            <IoCloseSharp
+              className="absolute top-0 right-0 text-white bg-gray-800 rounded-full w-5 h-5 cursor-pointer"
+              onClick={() => {
+                setMedia(null);
+                mediaRef.current.value = null;
+              }}
+            />
+            <video
+              src={mediaUrl}
+              className="w-full mx-auto h-72 object-contain rounded"
+              controls
+              alt="Selected Video"
+            />
+          </div>
+        );
+      } else {
+        return (
+          <div className="relative w-72 mx-auto">
+            <IoCloseSharp
+              className="absolute top-0 right-0 text-white bg-gray-800 rounded-full w-5 h-5 cursor-pointer"
+              onClick={() => {
+                setMedia(null);
+                mediaRef.current.value = null;
+              }}
+            />
+            <img
+              src={mediaUrl}
+              className="w-full mx-auto h-72 object-contain rounded"
+              alt="Selected Image"
+            />
+          </div>
+        );
+      }
     }
   };
 
@@ -92,10 +130,7 @@ const CreatePost = () => {
           {authLoading ? (
             <div className="skeleton w-8 h-8 rounded-full"></div>
           ) : (
-            <img
-              src={authUser?.profileImg || "/boy2.png"}
-              alt="Profile"
-            />
+            <img src={authUser?.profileImg || "/boy2.png"} alt="Profile" />
           )}
         </div>
       </div>
@@ -107,37 +142,22 @@ const CreatePost = () => {
           onChange={(e) => setText(e.target.value)}
         />
 
-        {img && (
-          <div className="relative w-72 mx-auto">
-            <IoCloseSharp
-              className="absolute top-0 right-0 text-white bg-gray-800 rounded-full w-5 h-5 cursor-pointer"
-              onClick={() => {
-                setImg(null);
-                imgRef.current.value = null;
-              }}
-            />
-            <img
-              src={URL.createObjectURL(img)}
-              className="w-full mx-auto h-72 object-contain rounded"
-              alt="Selected"
-            />
-          </div>
-        )}
+        {renderMediaPreview()}
 
         <div className="flex justify-between border-t py-2 border-t-gray-700 mr-13">
           <div className="flex gap-1 items-center">
             <CiImageOn
               className="fill-primary w-6 h-6 cursor-pointer"
-              onClick={() => imgRef.current.click()}
+              onClick={() => mediaRef.current.click()}
             />
             <BsEmojiSmileFill className="fill-primary w-5 h-5 cursor-pointer" />
           </div>
           <input
             type="file"
-            accept="image/*"
+            accept="image/*,video/*" // Accept both images and videos
             hidden
-            ref={imgRef}
-            onChange={handleImgChange}
+            ref={mediaRef}
+            onChange={handleMediaChange}
           />
           <button
             className="btn btn-primary rounded-full btn-sm text-white px-4"

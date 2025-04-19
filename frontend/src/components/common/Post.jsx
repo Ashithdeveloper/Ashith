@@ -1,7 +1,7 @@
 import { FaRegComment } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
 import { FaRegHeart } from "react-icons/fa";
-import { FaRegBookmark } from "react-icons/fa6";
+import { FaRegBookmark } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -17,7 +17,9 @@ const Post = ({ post }) => {
   const queryClient = useQueryClient();
   const postOwner = post.user;
   const isLiked = post.likes.includes(authUser._id);
+  console.log(post.media); // Log the video URL to check if it exists
 
+console.log(post);
   const isMyPost = authUser._id === post.user._id;
 
   const formattedDate = formatPostDate(post.createdAt);
@@ -42,13 +44,12 @@ const Post = ({ post }) => {
         throw new Error(error);
       }
     },
-    onSuccess: ({id}) => {
-      
-        queryClient.setQueryData(["posts"], (oldPosts) => {
-          if (!oldPosts) return [];
-          return oldPosts.filter((post) => post._id !== id);
-        });
-        toast.success("Post deleted successfully");
+    onSuccess: ({ id }) => {
+      queryClient.setQueryData(["posts"], (oldPosts) => {
+        if (!oldPosts) return [];
+        return oldPosts.filter((post) => post._id !== id);
+      });
+      toast.success("Post deleted successfully");
     },
   });
 
@@ -69,9 +70,8 @@ const Post = ({ post }) => {
       }
     },
     onSuccess: (updatedLikes) => {
-    toast.success("Post liked successfully")
+      toast.success("Post liked successfully");
 
-      // instead, update the cache directly for that post
       queryClient.setQueryData(["posts"], (oldData) => {
         return oldData.map((p) => {
           if (p._id === post._id) {
@@ -108,19 +108,19 @@ const Post = ({ post }) => {
       }
     },
     onSuccess: (data) => {
-       const newComment = data.comment;
+      const newComment = data.comment;
       toast.success("Comment posted successfully");
       setComment("");
 
-       queryClient.setQueryData(["posts"], (oldPosts) => {
-         if (!oldPosts) return oldPosts;
+      queryClient.setQueryData(["posts"], (oldPosts) => {
+        if (!oldPosts) return oldPosts;
 
-         return oldPosts.map((p) =>
-           p._id === post._id
-             ? { ...p, comments: [...p.comments, newComment] }
-             : p
-         );
-       });
+        return oldPosts.map((p) =>
+          p._id === post._id
+            ? { ...p, comments: [...p.comments, newComment] }
+            : p
+        );
+      });
     },
     onError: (error) => {
       toast.error(error.message);
@@ -138,7 +138,6 @@ const Post = ({ post }) => {
   };
 
   const handleLikePost = () => {
-
     if (isLiking) return;
     likePost();
   };
@@ -174,12 +173,11 @@ const Post = ({ post }) => {
                     onClick={handleDeletePost}
                   />
                 )}
-
                 {isDeleting && <LoadingSpinner size="sm" />}
               </span>
             )}
           </div>
-          <div className="flex flex-col gap-3 overflow-hidden  ">
+          <div className="flex flex-col gap-3 overflow-hidden">
             <span>{post.text}</span>
             {post.img && (
               <img
@@ -187,6 +185,15 @@ const Post = ({ post }) => {
                 className="h-80 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 my-2 "
                 alt=""
               />
+            )}
+            {post.media && (
+              <video
+                className="h-80 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 my-2"
+                controls
+              >
+                <source src={post.media} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             )}
           </div>
           <div className="flex justify-between mt-3">
@@ -199,12 +206,12 @@ const Post = ({ post }) => {
                     .showModal()
                 }
               >
-                <FaRegComment className="w-4 h-4  text-slate-500 group-hover:text-sky-400" />
+                <FaRegComment className="w-4 h-4 text-slate-500 group-hover:text-sky-400" />
                 <span className="text-sm text-slate-500 group-hover:text-sky-400">
                   {post.comments.length}
                 </span>
               </div>
-              {/* using Modal Component from DaisyUI */}
+
               <dialog
                 id={`comments_modal${post._id}`}
                 className="modal border-none outline-none"
@@ -221,12 +228,7 @@ const Post = ({ post }) => {
                       <div key={comment._id} className="flex gap-2 items-start">
                         <div className="avatar">
                           <div className="w-8 rounded-full">
-                            <img
-                              src={
-                                comment.user.profileImg ||
-                                "/boy2.png"
-                              }
-                            />
+                            <img src={comment.user.profileImg || "/boy2.png"} />
                           </div>
                         </div>
                         <div className="flex flex-col">
@@ -248,7 +250,7 @@ const Post = ({ post }) => {
                     onSubmit={handlePostComment}
                   >
                     <textarea
-                      className="textarea w-full p-1 rounded text-md resize-none border focus:outline-none  border-gray-800"
+                      className="textarea w-full p-1 rounded text-md resize-none border focus:outline-none border-gray-800"
                       placeholder="Add a comment..."
                       value={comment}
                       onChange={(e) => setComment(e.target.value)}
@@ -262,12 +264,14 @@ const Post = ({ post }) => {
                   <button className="outline-none">close</button>
                 </form>
               </dialog>
+
               <div className="flex gap-1 items-center group cursor-pointer">
-                <BiRepost className="w-6 h-6  text-slate-500 group-hover:text-green-500" />
+                <BiRepost className="w-6 h-6 text-slate-500 group-hover:text-green-500" />
                 <span className="text-sm text-slate-500 group-hover:text-green-500">
                   0
                 </span>
               </div>
+
               <div
                 className="flex gap-1 items-center group cursor-pointer"
                 onClick={handleLikePost}
@@ -279,7 +283,6 @@ const Post = ({ post }) => {
                 {isLiked && !isLiking && (
                   <FaRegHeart className="w-4 h-4 cursor-pointer text-pink-500 " />
                 )}
-
                 <span
                   className={`text-sm  group-hover:text-pink-500 ${
                     isLiked ? "text-pink-500" : "text-slate-500"
@@ -289,6 +292,7 @@ const Post = ({ post }) => {
                 </span>
               </div>
             </div>
+
             <div className="flex w-1/3 justify-end gap-2 items-center">
               <FaRegBookmark className="w-4 h-4 text-slate-500 cursor-pointer" />
             </div>
@@ -298,4 +302,5 @@ const Post = ({ post }) => {
     </>
   );
 };
+
 export default Post;

@@ -5,58 +5,87 @@ import Notification from '../Models/notification.model.js';
 
 export const createPost = async (req, res) => {
   try {
-   
     const { text } = req.body;
-    let img = req.file ? req.file.buffer.toString("base64") : null; // Extract image from multer
+    let mediaUrl = null;
 
-    if (!text && !img) {
-      return res.status(400).json({ error: "Post must have text or image" });
-    }
+    if (req.file) {
+      const fileBuffer = req.file.buffer.toString("base64");
+      const mimeType = req.file.mimetype; //  "image/png" or "video/mp4"
 
-    // Upload image to Cloudinary if exists
-    if (img) {
       const uploadedResponse = await cloudinary.uploader.upload(
-        `data:image/png;base64,${img}`
+        `data:${mimeType};base64,${fileBuffer}`,
+        {
+          resource_type: mimeType.startsWith("video") ? "video" : "image",
+        }
       );
-      img = uploadedResponse.secure_url;
+
+      mediaUrl = uploadedResponse.secure_url;
     }
 
-    const newPost = new Post({ user: req.user._id, text, img });
+    if (!text && !mediaUrl) {
+      return res
+        .status(400)
+        .json({ error: "Post must have text, image, or video" });
+    }
+
+    const newPost = new Post({
+      user: req.user._id,
+      text,
+      media: mediaUrl, // make sure your schema has a 'media' field instead of just 'img'
+    });
+
     await newPost.save();
-      const populatedPost = await Post.findById(newPost._id).populate(
-        "user",
-        "username fullName profileImg"
-      );
-    
-     res.status(200).json(populatedPost);
+
+    const populatedPost = await Post.findById(newPost._id).populate(
+      "user",
+      "username fullName profileImg"
+    );
+
+    res.status(200).json(populatedPost);
   } catch (error) {
     console.log(`Error creating post: ${error}`);
     res.status(500).json({ error: "Server Error" });
   }
 };
 
+
 export const deletePost = async (req, res) => {
-    try {
-        const {id} = req.params;
-        const post = await Post.findById(id);
-        if(!post){
-            return res.status(404).json({ error: "Post not found" });
-        }
-        if(post.user.toString() !== req.user._id.toString()){
-            return res.status(401).json({ error: "Unauthorized to delete this post" });
-        }
-        if(post.img){
-            const imgId = post.img.split("/").pop().split(".")[0];
-            await cloudinary.uploader.destroy(imgId);
-        }
-        await Post.findByIdAndDelete(id);
-       
-        res.status(200).json({ message: "Post deleted successfully",id });
-    } catch (error) {
-        console.log(`Error deleting post ${error}`)
-        res.status(500).json({ error: "Server Error" });
+  try {
+    const { id } = req.params;
+    const post = await Post.findById(id);
+
+    if (!post) {
+      return res.status(404).json({ error: "Post not found" });
     }
-}
+
+    if (post.user.toString() !== req.user._id.toString()) {
+      return res
+        .status(401)
+        .json({ error: "Unauthorized to delete this post" });
+    }
+
+    // support both old 'img' field and new 'media' field
+    const mediaUrl = post.media || post.img;
+
+    if (mediaUrl) {
+      const publicId = mediaUrl.split("/").pop().split(".")[0];
+      const isVideo =
+        mediaUrl.includes("/video/") || mediaUrl.match(/\.(mp4|mov|avi|webm)$/);
+
+      await cloudinary.uploader.destroy(publicId, {
+        resource_type: isVideo ? "video" : "image",
+      });
+    }
+
+    await Post.findByIdAndDelete(id);
+
+    res.status(200).json({ message: "Post deleted successfully", id });
+  } catch (error) {
+    console.log(`Error deleting post ${error}`);
+    res.status(500).json({ error: "Server Error" });
+  }
+};
+
 export const createComment = async (req ,res) =>{
     try {
         const {text} = req.body;

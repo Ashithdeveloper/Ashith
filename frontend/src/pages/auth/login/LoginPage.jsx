@@ -41,7 +41,7 @@ const LoginPage = () => {
     },
     onSuccess: () => {
       // refetch the authUser
-       toast.success("Account Login successfully");
+      toast.success("Account Login successfully");
       queryClient.invalidateQueries({ queryKey: ["authUser"] });
     },
   });
@@ -61,7 +61,7 @@ const LoginPage = () => {
         <img
           src="/knowverse.png"
           alt="Knowverse"
-          srcset=""
+          srcSet=""
           className="lg:w-80   "
         />
       </div>
@@ -70,7 +70,7 @@ const LoginPage = () => {
           <img
             src="/knowverse.png"
             alt="Knowverse"
-            srcset=""
+            srcSet=""
             className="w-28 rounded-4xl ml-9 lg:hidden "
           />
           <h1 className="text-4xl font-extrabold text-black">{"Let's"} go.</h1>
