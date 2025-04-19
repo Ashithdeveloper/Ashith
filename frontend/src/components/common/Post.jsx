@@ -182,7 +182,7 @@ console.log(post);
             {post.img && (
               <img
                 src={post.img}
-                className="h-100 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 md:mx-4 my-3 "
+                className="h-100 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 md:mx-15 my-3 "
                 alt=""
               />
             )}
