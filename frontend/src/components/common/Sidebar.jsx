@@ -42,7 +42,7 @@ const Sidebar = () => {
     <div className="md:flex-[2_2_0] w-18 max-w-60 ml-5 hidden sm:block ">
       <div className="sticky top-0 left-0 h-screen flex flex-col border-r border-gray-700 w-20 md:w-full">
         <Link to="/" className="flex justify-center md:justify-start h-25   ">
-          <div className=" mt-5 font-bold text-3xl ml-1.5   rounded-2xl hidden lg:block mr-4 ">
+          <div className=" mt-5 font-bold text-3xl ml-3   rounded-2xl hidden lg:block mr-4 ">
             <img
               src="/knowverse.png"
               alt="Knowverse"
@@ -50,14 +50,14 @@ const Sidebar = () => {
             />
           </div>
         </Link>
-        <ul className="flex flex-col gap-3 mt-23  shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] p-8 pr-6 rounded-2xl ml-5  mr-5 ">
+        <ul className="flex flex-col gap-3 mt-23  shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] p-8 pr-8 rounded-2xl ml-5  mr-5 ">
           <li className="flex justify-center md:justify-start">
             <Link
               to="/"
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-b-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
               <MdHomeFilled className="w-10 h-10" />
-              <span className="text-4x1 hidden md:block">Home</span>
+              <span className="text-6x1 hidden md:block">Home</span>
             </Link>
           </li>
           <li className="flex justify-center md:justify-start">
