@@ -50,7 +50,7 @@ const Sidebar = () => {
             />
           </div>
         </Link>
-        <ul className="flex flex-col gap-3 mt-23  shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] p-8 pr-8 rounded-2xl ml-2  mr-4 ">
+        <ul className="flex flex-col gap-3 mt-23  shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] p-8 pr-8 rounded-2xl  mr-4 ">
           <li className="flex justify-center md:justify-start">
             <Link
               to="/"
