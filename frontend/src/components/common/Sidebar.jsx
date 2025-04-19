@@ -39,7 +39,7 @@ const Sidebar = () => {
   const { data: authUser } = useQuery({ queryKey: ["authUser"] });
 
   return (
-    <div className="md:flex-[2_2_0] w-18 max-w-60 ml-5 hidden sm:block ">
+    <div className="md:flex-[2_2_0] w-18 max-w-63 ml-5 hidden sm:block ">
       <div className="sticky top-0 left-0 h-screen flex flex-col border-r border-gray-700 w-20 md:w-full">
         <Link to="/" className="flex justify-center md:justify-start h-25   ">
           <div className=" mt-5 font-bold text-3xl ml-3   rounded-2xl hidden lg:block mr-4 ">
@@ -66,7 +66,7 @@ const Sidebar = () => {
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-b-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
               <IoSearchSharp className="w-10 h-10" />
-              <span className="text-lg hidden md:block">Search</span>
+              <span className="text-[30px] hidden md:block">Search</span>
             </Link>
           </li>
 
@@ -76,7 +76,7 @@ const Sidebar = () => {
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-b-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
               <GrArticle className="w-10 h-10" />
-              <span className="text-lg hidden md:block">Articles</span>
+              <span className="text-[30px] hidden md:block">Articles</span>
             </Link>
           </li>
 
@@ -86,7 +86,7 @@ const Sidebar = () => {
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
               <IoNotifications className="w-8 h-8" />
-              <span className="text-lg hidden md:block">Notifications</span>
+              <span className="text-[30px] hidden md:block">Notifications</span>
             </Link>
           </li>
 
@@ -96,7 +96,7 @@ const Sidebar = () => {
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
               <FaUser className="w-8 h-8" />
-              <span className="text-lg hidden md:block">Profile</span>
+              <span className="text-[30px] hidden md:block">Profile</span>
             </Link>
           </li>
         </ul>
