@@ -112,7 +112,7 @@ const Sidebar = () => {
             </div>
             <div className="flex justify-between flex-1 shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] p-2 rounded-2xl  ">
               <div className="hidden md:block">
-                <p className="text-black font-bold text-sm w-17 truncate">
+                <p className="text-black font-bold text-sm w-13 truncate">
                   {authUser?.fullName}
                 </p>
                 <p className="text-slate-500 text-sm ">@{authUser?.username}</p>
