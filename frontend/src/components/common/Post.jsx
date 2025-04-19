@@ -182,13 +182,13 @@ console.log(post);
             {post.img && (
               <img
                 src={post.img}
-                className="h-80 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 my-2 "
+                className="h-100 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 my-2 "
                 alt=""
               />
             )}
             {post.media && (
               <video
-                className="h-80 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 my-2"
+                className="h-100 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 my-2"
                 controls
               >
                 <source src={post.media} type="video/mp4" />
