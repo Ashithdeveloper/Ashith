@@ -57,7 +57,7 @@ const Sidebar = () => {
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-b-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
               <MdHomeFilled className="w-10 h-10" />
-              <span className="text-[30px] hidden md:block">Home</span>
+              <span className="text-[25px] hidden md:block">Home</span>
             </Link>
           </li>
           <li className="flex justify-center md:justify-start">
@@ -66,7 +66,7 @@ const Sidebar = () => {
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-b-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
               <IoSearchSharp className="w-10 h-10" />
-              <span className="text-[30px] hidden md:block">Search</span>
+              <span className="text-[25px] hidden md:block">Search</span>
             </Link>
           </li>
 
@@ -76,7 +76,7 @@ const Sidebar = () => {
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-b-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
               <GrArticle className="w-10 h-10" />
-              <span className="text-[30px] hidden md:block">Articles</span>
+              <span className="text-[25px] hidden md:block">Articles</span>
             </Link>
           </li>
 
@@ -86,7 +86,7 @@ const Sidebar = () => {
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
               <IoNotifications className="w-8 h-8" />
-              <span className="text-[30px] hidden md:block">Notifications</span>
+              <span className="text-[25px] hidden md:block">Notifications</span>
             </Link>
           </li>
 
@@ -96,7 +96,7 @@ const Sidebar = () => {
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
               <FaUser className="w-8 h-8" />
-              <span className="text-[30px] hidden md:block">Profile</span>
+              <span className="text-[25px] hidden md:block">Profile</span>
             </Link>
           </li>
         </ul>
