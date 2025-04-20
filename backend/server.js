@@ -39,6 +39,7 @@ app.use(
       "http://localhost:5173",
       "http://127.0.0.1:5173",
       "https://a4techsentinelsp1.web.app",
+      "a4techsentinelsp1.firebaseapp.com"
     ], // Allow multiple origins
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
