@@ -179,22 +179,29 @@ console.log(post);
           </div>
           <div className="flex flex-col gap-3 overflow-hidden">
             <span>{post.text}</span>
-            {post.img && (
+             {post.img && (
               <img
                 src={post.img}
-                className="h-100 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 md:mx-15 my-3 "
+                className="h-80 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 md:mx-4 my-4"
                 alt=""
               />
             )}
-            {post.media && (
-              <video
-                className="h-100 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 md:mx-18 my-2"
-                controls
-              >
-                <source src={post.media} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            )}
+            {post.media &&
+              (post.media.endsWith(".mp4") || post.media.includes("video") ? (
+                <video
+                  className="h-80 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 md:mx-4 my-4"
+                  controls
+                >
+                  <source src={post.media} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <img
+                  src={post.media}
+                  className="h-80 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 md:mx-4 my-4"
+                  alt=""
+                />
+              ))}
           </div>
           <div className="flex justify-between mt-3">
             <div className="flex gap-4 items-center w-2/3 justify-between">
