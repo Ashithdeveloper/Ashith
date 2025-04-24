@@ -64,17 +64,30 @@ const NotificationPage = () => {
         <div className="flex justify-between items-center p-4 border-b border-gray-700">
           <p className="font-bold">Notifications</p>
           <div className="dropdown ">
-            <div tabIndex={0} role="button" className="m-1">
-              <IoSettingsOutline className="w-4" />
-            </div>
-            <ul
-              tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+            {/* <div tabIndex={0} role="button" className="m-1"></div> */}
+            <button
+              className="m-1 btn"
+              onClick={() => document.getElementById("my_modal_3").showModal()}
             >
-              <li>
-                <a onClick={deleteNotifications}>Delete all notifications</a>
-              </li>
-            </ul>
+              <IoSettingsOutline className="w-4" />
+            </button>
+
+            <dialog id="my_modal_3" className="modal">
+              <div className="modal-box">
+                <form method="dialog">
+                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                    ✕
+                  </button>
+                </form>
+                <h3 className="text-lg font-bold">Settings</h3>
+                <a
+                  className="text-red-500 cursor-pointer"
+                  onClick={() => deleteNotifications()}
+                >
+                  Delete all notifications
+                </a>
+              </div>
+            </dialog>
           </div>
         </div>
         {isLoading && (
@@ -100,7 +113,7 @@ const NotificationPage = () => {
                     <img
                       src={
                         notification.from.profileImg ||
-                        "/avatar-placeholder.png"
+                        "/boy2.png"
                       }
                     />
                   </div>
@@ -122,3 +135,4 @@ const NotificationPage = () => {
   );
 };
 export default NotificationPage;
+
