@@ -179,17 +179,17 @@ console.log(post);
           </div>
           <div className="flex flex-col gap-4 overflow-hidden ">
             <span>{post.text}</span>
-            {post.img && (
+             {post.img && (
               <img
                 src={post.img}
-                className="h-80 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 md:mx-4 my-4"
+                className=" h-90 md:h-110 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-0 md:mx-4 my-4 mr-4"
                 alt=""
               />
             )}
             {post.media &&
               (post.media.endsWith(".mp4") || post.media.includes("video") ? (
                 <video
-                  className="h-80 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-0 md:mx-4 my-4 mr-4"
+                  className="h-90 md:h-110 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-0 md:mx-4 my-4 mr-4"
                   controls
                 >
                   <source src={post.media} type="video/mp4" />
@@ -198,7 +198,7 @@ console.log(post);
               ) : (
                 <img
                   src={post.media}
-                  className="h-80 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-2 md:mx-4 my-4"
+                  className="h-110 object-contain rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] mx-0 md:mx-4 my-4 mr-4"
                   alt=""
                 />
               ))}

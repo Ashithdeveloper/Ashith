@@ -84,6 +84,16 @@ const CreatePost = () => {
       const mediaUrl = URL.createObjectURL(media);
       const isVideo = media.type.startsWith("video/");
 
+      if (isVideo) {
+        return (
+          <div className="relative w-72 mx-auto">
+            <IoCloseSharp
+             className="absolute top-2 right-2 text-white bg-gray-800 rounded-full w-6 h-6 cursor-pointer z-10 p-1"
+              onClick={() => {
+                setMedia(null);
+                mediaRef.current.value = null;
+              }}
+            />
       return (
         <div className="relative w-72 mx-auto">
           <IoCloseSharp

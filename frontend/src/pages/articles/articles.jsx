@@ -75,7 +75,7 @@ const Articles = () => {
   return (
     <div className="flex-[4_4_0] border-l border-r border-gray-700 min-h-screen">
       <div className="flex justify-between items-center p-4 border-b border-gray-700">
-        <p className="font-bold"> Articles</p>
+        <p className="font-bold mr-1"> Articles</p>
 
         <form className="max-w-md mx-auto" onSubmit={searcharticles}>
           <label
