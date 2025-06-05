@@ -39,7 +39,7 @@ const Sidebar = () => {
   const { data: authUser } = useQuery({ queryKey: ["authUser"] });
 
   return (
-    <div className="md:flex-[2_2_0] w-18 max-w-63 ml-5 hidden sm:block ">
+    <div className="md:flex-[2_2_0] w-18 max-w-52 ml-3 hidden sm:block ">
       <div className="sticky top-0 left-0 h-screen flex flex-col border-r border-gray-700 w-20 md:w-full">
         <Link to="/" className="flex justify-center md:justify-start h-25   ">
 
@@ -48,19 +48,19 @@ const Sidebar = () => {
             <img
               src="/knowverse.png"
               alt="Knowverse"
-              className="max-w-50 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-3xl "
+              className="max-w-40 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-3xl "
             />
           </div>
         </Link>
 
-        <ul className="flex flex-col gap-3 mt-17  shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] p-4  rounded-2xl  mr-5 ">
+        <ul className="flex flex-col gap-3 mt-17  shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] p-4  rounded-2xl  mr-4 ">
           <li className="flex justify-center md:justify-start">
             <Link
               to="/"
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-b-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
-              <MdHomeFilled className="w-10 h-10" />
-              <span className="text-[25px] hidden md:block">Home</span>
+              <MdHomeFilled className="w-8 h-8" />
+              <span className="text-lg hidden md:block">Home</span>
             </Link>
           </li>
           <li className="flex justify-center md:justify-start">
@@ -68,8 +68,8 @@ const Sidebar = () => {
               to="/search"
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-b-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
-              <IoSearchSharp className="w-10 h-10" />
-              <span className="text-[25px] hidden md:block">Search</span>
+              <IoSearchSharp className="w-8 h-8" />
+              <span className="text-lg hidden md:block">Search</span>
             </Link>
           </li>
 
@@ -78,8 +78,8 @@ const Sidebar = () => {
               to="/articles"
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-b-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
-              <GrArticle className="w-10 h-10" />
-              <span className="text-[25px] hidden md:block">Articles</span>
+              <GrArticle className="w-8 h-8" />
+              <span className="text-lg hidden md:block">Articles</span>
             </Link>
           </li>
 
@@ -88,8 +88,8 @@ const Sidebar = () => {
               to="/notifications"
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
-              <IoNotifications className="w-8 h-8" />
-              <span className="text-[25px] hidden md:block">Notifications</span>
+              <IoNotifications className="w-6 h-6" />
+              <span className="text-lg hidden md:block">Notifications</span>
             </Link>
           </li>
 
@@ -98,8 +98,8 @@ const Sidebar = () => {
               to={`/profile/${authUser?.username}`}
               className="flex gap-3 items-center hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all rounded-box duration-300 py-2 pl-4 pr-4 max-w-fit cursor-pointer"
             >
-              <FaUser className="w-8 h-8" />
-              <span className="text-[25px] hidden md:block">Profile</span>
+              <FaUser className="w-6 h-6" />
+              <span className="text-lg hidden md:block">Profile</span>
             </Link>
           </li>
         </ul>
@@ -115,7 +115,7 @@ const Sidebar = () => {
             </div>
             <div className="flex justify-between flex-1 shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] p-2 rounded-2xl  ">
               <div className="hidden md:block">
-                <p className="text-black font-bold text-sm w-32 truncate">
+                <p className="text-black font-bold text-sm w-20 truncate">
                   {authUser?.fullName}
                 </p>
                 <p className="text-slate-500 text-sm ">@{authUser?.username}</p>

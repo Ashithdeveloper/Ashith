@@ -69,7 +69,7 @@ const Posts = ({ feedType, username, userId }) => {
         <p className="text-center my-4">No posts in this tab. Switch 👻</p>
       )}
       {!isLoading && !isRefetching && posts && (
-        <div className="mt-2 mb-16">
+        <div className="mt-2 mb-16 mx-3">
           {posts.map((post) => (
             <Post key={post._id} post={post}  />
           ))}

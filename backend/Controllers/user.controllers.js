@@ -135,7 +135,7 @@ export const updateUser = async (req,res) =>{
         res.status(500).json({ error: "Server Error" });
     }
 }
-//For search the userId 
+//For searching the users
 
 export const searchUser = async( req,res) =>{
     const query = req.query.q;

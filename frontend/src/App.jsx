@@ -94,7 +94,7 @@ function App() {
         {authUser ? <RightPanel /> : null}
         <Toaster />
       </div>
-      <BottomNavbar authUser={authUser} />
+      {authUser ? <BottomNavbar authUser={authUser} /> : null}
     </>
   );
 }

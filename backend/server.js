@@ -35,11 +35,13 @@ app.use(express.urlencoded({
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://127.0.0.1:5173"], // Allow multiple origins
+    origin: [
+      "http://localhost:5173",
+      "http://127.0.0.1:5173",
+    ], // Allow multiple origins
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
-
   })
 );
 
