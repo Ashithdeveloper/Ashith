@@ -152,7 +152,7 @@ const ProfilePage = () => {
                 />
                 {isMyProfile && (
                   <div
-                    className="absolute top-2 right-2 rounded-full p-2 bg-gray-800 bg-opacity-75 cursor-pointer opacity-0 group-hover/cover:opacity-100 transition duration-200"
+                    className="absolute top-2 right-2 rounded-full p-2 bg-gray-800 bg-opacity-75 cursor-pointer opacity-100 sm:opacity-0 sm:group-hover/cover:opacity-100 transition duration-200"
                     onClick={() => coverImgRef.current.click()}
                   >
                     <MdEdit className="w-8 h-8 text-white" />
@@ -176,14 +176,9 @@ const ProfilePage = () => {
                 {/* USER AVATAR */}
                 <div className="avatar absolute -bottom-16 left-4">
                   <div className="w-32 rounded-full relative group/avatar">
-                    <img
-                      src={
-                        profileImg ||
-                        user?.profileImg ||
-                        "/boy2.png"
-                      }
-                    />
-                    <div className="absolute top-5 right-3 p-1 bg-primary rounded-full group-hover/avatar:opacity-100 opacity-0 cursor-pointer">
+                    <img src={profileImg || user?.profileImg || "/boy2.png"} />
+
+                    <div className="absolute top-5 right-3 p-1 bg-primary rounded-full opacity-100 sm:opacity-0 sm:group-hover/avatar:opacity-100 cursor-pointer">
                       {isMyProfile && (
                         <MdEdit
                           className="w-6 h-6 text-white"
