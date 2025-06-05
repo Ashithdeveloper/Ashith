@@ -84,16 +84,6 @@ const CreatePost = () => {
       const mediaUrl = URL.createObjectURL(media);
       const isVideo = media.type.startsWith("video/");
 
-      if (isVideo) {
-        return (
-          <div className="relative w-72 mx-auto">
-            <IoCloseSharp
-             className="absolute top-2 right-2 text-white bg-gray-800 rounded-full w-6 h-6 cursor-pointer z-10 p-1"
-              onClick={() => {
-                setMedia(null);
-                mediaRef.current.value = null;
-              }}
-            />
       return (
         <div className="relative w-72 mx-auto">
           <IoCloseSharp
@@ -113,14 +103,15 @@ const CreatePost = () => {
             <img
               src={mediaUrl}
               className="w-full mx-auto h-72 object-contain rounded"
-              alt="Selected Image"
+              alt="Selected Media"
             />
           )}
         </div>
       );
     }
-  };
 
+    return null; 
+  };
 
   return (
     <div className="flex p-4 items-start gap-4 border-b border-gray-700 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] mt-5 mx-5">
